@@ -1,4 +1,32 @@
+<h1>Approach 1</h1>
 <div *ngFor="let post of posts">
+    <span class="status" [class.even]="post.even"></span>
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.body }}</p>
+</div>
+<h1>Approach 2</h1>
+<div *ngFor="let post of posts">
+    <span class="status" 
+    [ngClass]="{
+        'even': post.even,
+        'treeMultiple': post.treeMultiple
+    }"></span>
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.body }}</p>
+</div>
+<h1>Approach 3</h1>
+<div *ngFor="let post of posts">
+    <span class="status" 
+    [style.backgroundColor]="post.even ? 'blue': 'yellow'"></span>
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.body }}</p>
+</div>
+<h1>Approach 4</h1>
+<div *ngFor="let post of posts">
+    <span class="status" 
+    [ngStyle]="{
+        'background-color': post.even ? 'green': 'purple'
+    }"></span>
     <h2>{{ post.title }}</h2>
     <p>{{ post.body }}</p>
 </div>

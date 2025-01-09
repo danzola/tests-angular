@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SharedService } from './shared.service';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Post } from './post';
 
 @Injectable({
@@ -17,6 +17,8 @@ export class CalcService {
   }
 
   getAllPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
+    return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts').pipe(      
+      map(data => data.map(item => Object.assign(new Post(), item))
+    ));
   }  
 }
